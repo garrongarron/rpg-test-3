@@ -1,3 +1,4 @@
+import { playPlim } from "../../landing/Music";
 import basicContainer from "../../ui/modules/BasicContainer";
 
 let timeoutN
@@ -32,6 +33,7 @@ let mission1 = () => {
             console.log('Achivement');
             basicContainer.show('Walk backwards', "Press [S] to walk backwards", 'S')
             mission = mission2
+            playPlim()
             
         }, 2 * 1000);
     } else {
@@ -47,6 +49,7 @@ let mission2 = () => {
             console.log('Achivement');
             basicContainer.show('Run ahead', "Press [SHIFT]+[W] to run ahead", '.W')
             mission = mission3
+            playPlim()
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)
@@ -61,6 +64,7 @@ let mission3 = () => {
             console.log('Achivement');
             basicContainer.show('Run backwards', "Press [SHIFT]+[S] to run backwards", '.S')
             mission = mission4
+            playPlim()
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)
@@ -75,6 +79,7 @@ let mission4 = () => {
             console.log('Achivement');
             basicContainer.show('Tutor', "Well done!", 'XD')
             mission = null
+            playPlim()
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)

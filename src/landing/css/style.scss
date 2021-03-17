@@ -119,12 +119,11 @@ body {
         padding: 1vw;
         background-color: #f90000;
         color: #ffffff;
-        width: 15vw;
-        font-size: 2vw;
+        width: 12vw;
         text-align: center;
         font-family: 'gotic';
         z-index: 1;
-        font-size: 2em;
+        font-size: 1.5em;
         border-radius: 10px;
         box-shadow: 0px 0px 8px #ff0000;
         text-shadow: 0px 0px 4px white;
@@ -139,7 +138,7 @@ body {
     }
 }
 .scene1-background{
-    background-color: #111111;
+    // background-color: #111111;
     position: fixed;
     top: 15vh;
     width: 90vw;
@@ -147,8 +146,8 @@ body {
     left: 5vw;
     border-radius: 15px;
     opacity: .5;
-    border: 2px solid white;
-    box-shadow: 0px 0px 8px white;
+    // border: 2px solid white;
+    // box-shadow: 0px 0px 8px white;
 }
 .fadeIn {
     animation-name: fadeIn;
