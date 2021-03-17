@@ -1707,7 +1707,6 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
             '}'
         ].join('\n'),
     };
-    console.log(params.fragmentShader);
     return new THREE.ShaderMaterial(params);
 };
 
