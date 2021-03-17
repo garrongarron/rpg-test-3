@@ -13,13 +13,13 @@ let loadAudio = () => {
 
     fuego = document.createElement('audio')
     fuego.src = fuegoFile 
-    fuego.volume = 0.2;
+    fuego.volume = 0.5;
     fuego.loop = true
     document.body.appendChild(fuego)
 
     plim = document.createElement('audio')
     plim.src = plimFile 
-    plim.volume = 0.2;
+    plim.volume = 1.0;
     document.body.appendChild(plim)
 
 
