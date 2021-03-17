@@ -1,0 +1,133 @@
+.basic-container {
+    width: 400px;
+    height: 80px;
+    display: block;
+    bottom: 3em;
+    left: 50%;
+    position: fixed;
+    margin-left: -200px;
+    border-radius: 50px;
+    color: white;
+    font-family: sans-serif;
+    box-shadow: 0px 0px 8px white;
+}
+
+.basic-container>div,
+.basic-container .background {
+    position: absolute;
+    width: 403px;
+    height: 80px;
+    top: 0;
+    /* padding: 1em; */
+    border-radius: 50px;
+    left: -3px;
+}
+
+.basic-container .background {
+    opacity: 0.7;
+    background-color: black;
+}
+
+.basic-container>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 80px; */
+}
+
+.basic-container .title::before,
+.basic-container .title::after {
+    content: " - ";
+}
+
+.basic-container .title {
+    font-weight: bolder;
+    font-style: italic;
+    text-shadow: 1px 1px 2px black;
+}
+
+.basic-container .message {
+    text-shadow: 1px 1px 2px black;
+}
+
+.basic-container .ok-btn {
+    z-index: 2;
+    width: 2em;
+    height: 2em;
+    background-color: green;
+    position: absolute;
+    right: 1em;
+    /* bottom: -1em; */
+    border-radius: 50%;
+    line-height: 2em;
+    text-align: center;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.fadeIn1 {
+    animation: fadeIn1;
+    animation-duration: 1s;
+}
+
+.fadeOut1 {
+    animation: fadeOut1;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut1 {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/**/
+
+.queue-container {
+    position: fixed;
+    top: 25%;
+    width: 200px;
+    right: 0;
+    font-family: sans-serif;
+}
+
+.queue-container .element {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    position: relative;
+    margin-top: 1em;
+}
+
+.queue-container .element .ok-btn {
+    z-index: 2;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    position: absolute;
+    right: 1em;
+    margin-top: -1.5em;
+    text-shadow: 1px 1px 2px black;
+}
+
