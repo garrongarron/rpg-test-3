@@ -1,9 +1,9 @@
 import { TextureLoader } from 'three'
-import sand from '../images/sand-512.3.jpg'
+import sand from '../images/sand-512.jpg'
 import rock from '../images/rock-512.jpg'
 import grass from '../images/demo/img/grass1.jpg'
 import snow from '../images/demo/img/snow1.jpg'
-
+// import heightmap from '../images/demo/img/heightmap.png'
 let out = false
 let loadTextures = () => {
     if(out) return out
@@ -21,6 +21,7 @@ let loadTextures = () => {
     let promise3 = new Promise((resolve, reject) => { loader.load(rock, (t3) => { resolve(t3) }) })
 
     let promise4 = new Promise((resolve, reject) => { loader.load(snow, (t4) => { resolve(t4) }) })
+    // let promise5 = new Promise((resolve, reject) => { loader.load(heightmap, (t5) => { resolve(t5) }) })
 
     out = new Promise((resolve, response)=>{
         Promise.all([promise1, promise2, promise3, promise4]).then(t => {

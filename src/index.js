@@ -8,7 +8,7 @@ import startLanding from './landing/app.js'
 import goTo from './scenes/SceneHandler'
 import { loadAudio } from './landing/Music'
 
-// startLanding()
+startLanding()
 
-goTo('game')
-loadAudio()
+// goTo('game')
+// loadAudio()

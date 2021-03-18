@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import FS from './FragmentShader.glsl.js'
 /**
  * THREE.Terrain.js 1.6.0-20180415
  *
@@ -199,8 +198,8 @@ THREE.Terrain.Normalize = function (mesh, options) {
     // Mark the geometry as having changed and needing updates.
     mesh.geometry.verticesNeedUpdate = true;
     mesh.geometry.normalsNeedUpdate = true;
-    mesh.geometry.attributes.position.needsUpdate = true; 
-    
+    mesh.geometry.attributes.position.needsUpdate = true;
+
     mesh.material.needsUpdate = true
     mesh.geometry.computeBoundingSphere();
     mesh.geometry.computeFaceNormals();
@@ -1291,7 +1290,7 @@ THREE.Terrain.Perlin = function (g, options) {
     noise.seed(options.seed)
     let divisor = 500 * options.frequency;
     let range = (options.maxHeight - options.minHeight) * 0.5;
-    for (let index = 2; index < g.length; index = index+ 3) {
+    for (let index = 2; index < g.length; index = index + 3) {
 
         x = (g[index - 2] + options.position.x) / divisor
         y = (g[index - 1] + options.position.z) / divisor
@@ -1556,7 +1555,9 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
         assign = '',
         t0Repeat = textures[0].texture.repeat,
         t0Offset = textures[0].texture.offset;
-    for (var i = 0, l = textures.length; i < l; i++) {
+
+    //
+    for (var i = 0, l = textures.length ; i < l; i++) {
         // Uniforms
         textures[i].texture.wrapS = THREE.RepeatWrapping;
         textures[i].texture.wrapT = THREE.RepeatWrapping;
@@ -1591,6 +1592,7 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
             var blendAmount = !useLevels ? p :
                 '1.0 - smoothstep(' + v[0] + ', ' + v[1] + ', vPosition.z) + smoothstep(' + v[2] + ', ' + v[3] + ', vPosition.z)';
             assign += '        color = mix( ' +
+                // 'texture2D( texture_' + i + ', MyvUv * vec2( ' + glslifyNumber(tiRepeat.x) + ', ' + glslifyNumber(tiRepeat.y) + ' ) + vec2(sin(MyvUv.x)*100.0, cos(MyvUv.x)*100.0) ), ' +
                 'texture2D( texture_' + i + ', MyvUv * vec2( ' + glslifyNumber(tiRepeat.x) + ', ' + glslifyNumber(tiRepeat.y) + ' ) + vec2( ' + glslifyNumber(tiOffset.x) + ', ' + glslifyNumber(tiOffset.y) + ' ) ), ' +
                 'color, ' +
                 'max(min(' + blendAmount + ', 1.0), 0.0)' +
@@ -1606,7 +1608,7 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
         // blending: THREE.NormalBlending,
         // depthTest: <bool>,
         // depthWrite: <bool>,
-        // wireframe: false,
+        // wireframe: true,
         // wireframeLinewidth: 1,
         // vertexColors: THREE.NoColors,
         // skinning: <bool>,
@@ -1619,7 +1621,9 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
         uniforms: uniforms,
         vertexShader: THREE.ShaderLib.lambert.vertexShader.replace(
             'void main() {',
-            'varying vec2 MyvUv;\nvarying vec3 vPosition;\nvarying vec3 myNormal; void main() {\nMyvUv = uv;\nvPosition = position;\nmyNormal = normal;'
+            `varying vec2 MyvUv;
+            varying vec3 vPosition;\
+            varying vec3 myNormal; void main() {\nMyvUv = uv;\nvPosition = position;\nmyNormal = normal;`
         ),
         // This is mostly copied from THREE.ShaderLib.lambert.fragmentShader
         fragmentShader: [
@@ -1709,8 +1713,6 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
             '}'
         ].join('\n'),
     };
-    // params.fragmentShader = FS
-    // console.log(params.fragmentShader);
     return new THREE.ShaderMaterial(params);
 };
 
