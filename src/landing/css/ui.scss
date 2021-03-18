@@ -45,10 +45,12 @@
     font-weight: bolder;
     font-style: italic;
     text-shadow: 1px 1px 2px black;
+    user-select: none;
 }
 
 .basic-container .message {
     text-shadow: 1px 1px 2px black;
+    user-select: none;
 }
 
 .basic-container .ok-btn {
@@ -65,6 +67,7 @@
     border-right: 1px solid white;
     border-bottom: 1px solid white;
     text-shadow: 1px 1px 2px black;
+    user-select: none;
 }
 
 .fadeIn1 {

@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import FS from './FragmentShader.glsl.js'
 /**
  * THREE.Terrain.js 1.6.0-20180415
  *
@@ -1557,7 +1558,8 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
         t0Offset = textures[0].texture.offset;
     for (var i = 0, l = textures.length; i < l; i++) {
         // Uniforms
-        textures[i].texture.wrapS = textures[i].wrapT = THREE.RepeatWrapping;
+        textures[i].texture.wrapS = THREE.RepeatWrapping;
+        textures[i].texture.wrapT = THREE.RepeatWrapping;
         textures[i].texture.needsUpdate = true;
         uniforms['texture_' + i] = {
             type: 't',
@@ -1707,6 +1709,8 @@ THREE.Terrain.generateBlendedMaterial = function (textures) {
             '}'
         ].join('\n'),
     };
+    // params.fragmentShader = FS
+    // console.log(params.fragmentShader);
     return new THREE.ShaderMaterial(params);
 };
 

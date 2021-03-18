@@ -17,7 +17,6 @@ class ChunkManagers {
     }
 
     create(offset, size, subdivision) {
-        // console.log('creating**********');
         const geometry = new PlaneGeometry(size, size, subdivision, subdivision);
         const material = getBlend();
         let plane = new Mesh(geometry, material);
