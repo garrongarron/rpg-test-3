@@ -14,6 +14,7 @@ import keyListener from '../basic/KeyListener.js'
 import machine from '../basic/Machine.js'
 import startUI from '../ui/app.js'
 import startTutorial from './scene2/Totorial.js'
+import addGrass from '../grass/Grass.js'
 
 
 loadTextures()
@@ -54,6 +55,7 @@ class Scene2 {
             startTutorial()
             startUI()
         })
+        addGrass(scene)
     }
 
     stop() {

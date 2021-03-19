@@ -27,8 +27,9 @@ class Gravity {
         pointLight.position.x = position.x
         pointLight.position.z = position.z
 
-        let tmp = ray.intersectObjects(scene.children, true).filter(obj => {
-           return  !obj.object.free &&  obj.object.type != "BoxHelper" && obj.object.name != "Paladin_J_Nordstrom"
+        let sss = scene.children.filter(obj =>obj.name != "GRASS")
+        let tmp = ray.intersectObjects(sss, true).filter(obj => {
+           return  !obj.object.free &&  obj.object.type != "BoxHelper" && obj.object.name != "Paladin_J_Nordstrom" 
         })[0] 
 
         //"SkinnedMesh"
