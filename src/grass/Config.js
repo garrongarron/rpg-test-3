@@ -9,7 +9,8 @@ let config = {
     BEACH_TRANSITION_HIGH: 3.1,
     LIGHT_DIR: Vec3.create(0.0, 1.0, -1.0),
     FOG_COLOR: Color.create(0.74, 0.77, 0.91),//Color.create(0.74, 0.77, 0.91)
-    GRASS_COLOR: Color.create(0.99, 0.66, 0.0),//Color.create(0.45, 0.46, 0.19),
+    // GRASS_COLOR: Color.create(0.99, 0.66, 0.0),//Color.create(0.45, 0.46, 0.19),0.376, 
+    GRASS_COLOR: Color.create(0.5882,0.7255, 0.451),//Color.create(0.45, 0.46, 0.19),, 
     WATER_COLOR: Color.create(0.6, 0.7, 0.85),
     WIND_DEFAULT: 1.5,//1.5
     WIND_MAX: 3.0,

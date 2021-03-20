@@ -26,7 +26,7 @@ let addGrass = (scene) => {
         })
         
         scene.add(grass)
-        grass.position.y -=7
+        grass.position.y -=7.2
         console.log(grass);
     })
 }

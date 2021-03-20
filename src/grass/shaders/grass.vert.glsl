@@ -17,7 +17,7 @@ precision highp float;
 #define TRANSITION_HIGH  (%%TRANSITION_HIGH%%) // (end)
 #define TRANSITION_NOISE 0.06                  // transition noise scale
 
-const vec3 LIGHT_COLOR = vec3(1.0, 1.0, 0.99);
+const vec3 LIGHT_COLOR = vec3(1.0, 1.0, 1.);
 const vec3 SPECULAR_COLOR = vec3(1.0, 1.0, 0.0);
 
 uniform mat4 modelViewMatrix;
@@ -120,11 +120,16 @@ void main() {
 	float noisyAltitude = offset.z + hdata.b * TRANSITION_NOISE - (TRANSITION_NOISE / 2.0);
 	float degenerate = (
 		clamp(noisyAltitude,      TRANSITION_LOW,     TRANSITION_HIGH)
-		 - TRANSITION_LOW)* (1.0 / (TRANSITION_HIGH - TRANSITION_LOW)
-		 );
+		 - TRANSITION_LOW
+		 ) * (1.0 / (TRANSITION_HIGH - TRANSITION_LOW));
+
+	float degenerateTop = (
+		clamp(noisyAltitude,12.0,    18.0)
+		 - 12.0
+		 ) * (1.0 / 6.0);
 
 	// Transition geometry toward degenerate as we approach beach altitude
-	vpos *= degenerate;
+	vpos *= degenerate - degenerateTop;
 
 	// Vertex color must be brighter because it is multiplied with blade texture
 	vec3 color = min(vec3(grassColor.r * 1.25, grassColor.g * 1.25, grassColor.b * 0.95), 1.0);
@@ -138,14 +143,16 @@ void main() {
 	// Directional plus ambient
 	float light = 0.35 * diffuse + 0.65;
 	// Ambient occlusion shading - the lower vertex, the darker
-	float heightLight = 1.0 - hpct;
-	heightLight = heightLight * heightLight;
-	light = max(light - heightLight * 0.5, 0.0);
+	// float heightLight = 1.0 - hpct;
+	// heightLight = heightLight * heightLight;
+	// light = max(light - heightLight * 0.5, 0.0);
+
+	
 	vColor = vec4(
 		// Each blade is randomly colourized a bit by its position
-		light * 0.75 + cos(offset.x * 80.0) * 0.1,
-		light * 0.95 + sin(offset.y * 140.0) * 0.05,
-		light * 0.95 + sin(offset.x * 99.0) * 0.05,
+		light * 0.95 + cos(offset.x * 80.0) * 0.0,
+		light * 0.95 + sin(offset.y * 140.0) * 0.0,
+		light * 0.95 + sin(offset.x * 99.0) * 0.0,
 		1.0
 	);
 	vColor.rgb = vColor.rgb * LIGHT_COLOR * color;
