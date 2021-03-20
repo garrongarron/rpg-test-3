@@ -117,12 +117,14 @@ void main() {
 
 	// Determine if we want the grass to appear or not
 	// Use the noise channel to perturb the altitude grass starts growing at.
-	// float noisyAltitude = altitude + hdata.b * TRANSITION_NOISE - (TRANSITION_NOISE / 2.0);
-	// float degenerate = (clamp(noisyAltitude, TRANSITION_LOW, TRANSITION_HIGH) - TRANSITION_LOW)
-	// 	* (1.0 / (TRANSITION_HIGH - TRANSITION_LOW));
+	float noisyAltitude = offset.z + hdata.b * TRANSITION_NOISE - (TRANSITION_NOISE / 2.0);
+	float degenerate = (
+		clamp(noisyAltitude,      TRANSITION_LOW,     TRANSITION_HIGH)
+		 - TRANSITION_LOW)* (1.0 / (TRANSITION_HIGH - TRANSITION_LOW)
+		 );
 
 	// Transition geometry toward degenerate as we approach beach altitude
-	vpos *= 1.0;//degenerate;
+	vpos *= degenerate;
 
 	// Vertex color must be brighter because it is multiplied with blade texture
 	vec3 color = min(vec3(grassColor.r * 1.25, grassColor.g * 1.25, grassColor.b * 0.95), 1.0);

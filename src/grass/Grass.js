@@ -4,6 +4,10 @@ import camera from '../basic/Camera.js'
 import assetsInPromise from "./Loader.js"
 import { Mesh } from 'three'
 
+import machine from '../basic/Machine.js'
+
+
+
 let assetsReady = () => {
     return assetsInPromise
 }
@@ -16,8 +20,11 @@ let addGrass = (scene) => {
         grass.frustumCulled = false  // always draw, never cull
         grass.rotation.x = -Math.PI / 2
         grass.name = "GRASS"
-        grass.material.uniforms['time'].value += .01
-        grass.material.uniforms.drawPos.value = [camera.position.x, -camera.position.z]
+        machine.addCallback(()=>{
+            grass.material.uniforms['time'].value += .01
+            grass.material.uniforms.drawPos.value = [camera.position.x, -camera.position.z]
+        })
+        
         scene.add(grass)
         grass.position.y -=7
         console.log(grass);

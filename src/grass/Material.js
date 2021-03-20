@@ -21,7 +21,7 @@ let getMaterial = () => {
         heightMapScale,
         fogColor: config.FOG_COLOR,
         fogFar: config.GRASS_PATCH_RADIUS * 20, //fogDist, // 2000
-        grassFogFar: 170, //config.GRASS_PATCH_RADIUS * 2, //grassFogDist, // 170
+        grassFogFar: 75, //config.GRASS_PATCH_RADIUS * 2, //grassFogDist, // 170
         grassColor: config.GRASS_COLOR,
         transitionLow: config.BEACH_TRANSITION_LOW,
         transitionHigh: config.BEACH_TRANSITION_HIGH,
@@ -35,7 +35,7 @@ let getMaterial = () => {
     const hscale = opts.heightMapScale
 
     const vertScript = opts.vertScript.replace(
-        '%%BLADE_HEIGHT_TALL%%', (config.BLADE_HEIGHT_MAX * 1.5).toFixed(1)
+        '%%BLADE_HEIGHT_TALL%%', (config.BLADE_HEIGHT_MAX ).toFixed(1)
     ).replace(
         '%%BLADE_SEGS%%', config.BLADE_SEGS.toFixed(1)
     ).replace(

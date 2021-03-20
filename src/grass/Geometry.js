@@ -64,12 +64,9 @@ function initBladeShapeVerts(shape, numBlades, offset) {
         ))
         noise = noise * noise * noise
         noise *= 5.0
-        shape[i * 4 + 0] = config.BLADE_WIDTH
-            + Math.random() * config.BLADE_WIDTH * 0.5 // width
-        shape[i * 4 + 1] = config.BLADE_HEIGHT_MIN
-            + Math.pow(Math.random(), 4.0)
-            * (config.BLADE_HEIGHT_MAX - config.BLADE_HEIGHT_MIN) + noise // height
-
+        noise = 0.0
+        shape[i * 4 + 0] = config.BLADE_WIDTH + Math.random() * config.BLADE_WIDTH * 0.5 // width
+        shape[i * 4 + 1] = config.BLADE_HEIGHT_MIN + Math.pow(Math.random(), 4.0) * (config.BLADE_HEIGHT_MAX - config.BLADE_HEIGHT_MIN) + noise // height
         shape[i * 4 + 2] = 0.0 + Math.random() * 0.3 // lean
         shape[i * 4 + 3] = 0.05 + Math.random() * 0.3 // curve
     }

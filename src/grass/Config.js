@@ -5,8 +5,8 @@ let config = {
     MAX_TIMESTEP: 67, // max 67 ms/frame
     HEIGHTFIELD_SIZE: 3072.0,//3072
     HEIGHTFIELD_HEIGHT: 180.001,//180.0
-    BEACH_TRANSITION_LOW: 0.000000001,
-    BEACH_TRANSITION_HIGH: 0.000000002,
+    BEACH_TRANSITION_LOW: 0.8,
+    BEACH_TRANSITION_HIGH: 3.1,
     LIGHT_DIR: Vec3.create(0.0, 1.0, -1.0),
     FOG_COLOR: Color.create(0.74, 0.77, 0.91),//Color.create(0.74, 0.77, 0.91)
     GRASS_COLOR: Color.create(0.99, 0.66, 0.0),//Color.create(0.45, 0.46, 0.19),
@@ -22,10 +22,10 @@ let config = {
     //////////////////////////////////////////
     /////////////////////////////////////////
     ////////////////////////////////////////
-    BLADE_SEGS: 4, // # of blade segments
-    BLADE_WIDTH: 0.15,
-    BLADE_HEIGHT_MIN: 1.25,
-    BLADE_HEIGHT_MAX: 2.0,
+    BLADE_SEGS: 6, // # of blade segments
+    BLADE_WIDTH: 0.07,
+    BLADE_HEIGHT_MIN: 0.98,
+    BLADE_HEIGHT_MAX: 1.99,
     //////////////////////////////////////////
     /////////////////////////////////////////
     ////////////////////////////////////////
@@ -40,8 +40,8 @@ config.BLADE_VERTS = (config.BLADE_SEGS + 1) * 2// # of vertices per blade (1 si
 config.BLADE_INDICES = config.BLADE_SEGS * 12
 
 //UI
-config.NUM_GRASS_BLADES = 84 * 1000*2
-config.GRASS_PATCH_RADIUS = 150 //Math.round(255 / 2)
+config.NUM_GRASS_BLADES = 84 * 1000
+config.GRASS_PATCH_RADIUS = 50 //Math.round(255 / 2)
 
 //dinamic
 config.DRAW_POSITION = Vec2.create(0, 0)
