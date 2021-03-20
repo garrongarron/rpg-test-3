@@ -1,8 +1,6 @@
 import { vec3 as Vec3 } from './Vec.js'
 import { pmod } from './Gmath.js'
-import getCustomNoise from './CustomNoise.js'
 
-let gen = getCustomNoise()
 let offset = { x: 0, y: 0 }
 
 let Heightfield = (info) => {
@@ -65,19 +63,11 @@ function genFromImg(image, hf) {
             // normalized altitude value (0-1)
             // assume image is grayscale, so we only need 1 color component
             // height = data[i] / 255.0
-            height = gen.Get(x +offset.x, y+offset.y) /1
-            // height = 0.001 //gen.Get(x +offset.z, y +offset.y)/150
-            if(height>1){
-                console.log('height > 1');
-            }
-            if(height<0){
-                console.log('height<0');
-            }
             
             //height = (data[i+0] + data[i+1] + data[i+2]) / (255+255+255)
 
-            //  scale & store this altitude
-            heights[x + y * w] = hf.minHeight + height * heightRange
+            //  scale & store this altitude   
+            heights[x + y * w] = 25
         }
     }
     // Free these resources soon as possible

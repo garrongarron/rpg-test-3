@@ -5,8 +5,8 @@ let config = {
     MAX_TIMESTEP: 67, // max 67 ms/frame
     HEIGHTFIELD_SIZE: 3072.0,//3072
     HEIGHTFIELD_HEIGHT: 180.001,//180.0
-    BEACH_TRANSITION_LOW: 0.1,
-    BEACH_TRANSITION_HIGH: 0.13,
+    BEACH_TRANSITION_LOW: 0.000000001,
+    BEACH_TRANSITION_HIGH: 0.000000002,
     LIGHT_DIR: Vec3.create(0.0, 1.0, -1.0),
     FOG_COLOR: Color.create(0.74, 0.77, 0.91),//Color.create(0.74, 0.77, 0.91)
     GRASS_COLOR: Color.create(0.99, 0.66, 0.0),//Color.create(0.45, 0.46, 0.19),

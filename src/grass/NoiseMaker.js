@@ -1,18 +1,7 @@
 import SimplexNoise from './simplex-noise.js';
 import perlin from './perlin.js';
 
-/*
-  let params = {
-    noiseType: 'perlin',
-    scale: 10,
-    octaves: 2,
-    persistence: 1,
-    lacunarity: 1,
-    exponentiation: 1,
-    seed: 15,
-    height:3
-  }
-*/
+
 const noise = (function () {
 
     class _PerlinWrapper {

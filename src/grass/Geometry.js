@@ -1,8 +1,10 @@
 import config from './Config.js'
 import { nrand } from './Gmath.js'
 import noiseGenerator from './Simplex.js'
-import {InstancedBufferGeometry, Sphere, Vector3, BufferAttribute, InstancedBufferAttribute} from 'three'
+import { InstancedBufferGeometry, Sphere, Vector3, BufferAttribute, InstancedBufferAttribute } from 'three'
+import getCustomNoise from './CustomNoise.js'
 
+let gen = getCustomNoise()
 let opts = {
     // lightDir: config.LIGHT_DIR,
     numBlades: config.NUM_GRASS_BLADES,
@@ -76,7 +78,7 @@ function initBladeOffsetVerts(offset, numBlades, patchRadius) {
     for (let i = 0; i < numBlades; ++i) {
         offset[i * 4 + 0] = nrand() * patchRadius // x
         offset[i * 4 + 1] = nrand() * patchRadius // y
-        offset[i * 4 + 2] = 0.0 // z
+        offset[i * 4 + 2] = gen.Get(offset[i * 4 + 0], offset[i * 4 + 1]);// // z
         offset[i * 4 + 3] = Math.PI * 2.0 * Math.random() // rot
     }
 }

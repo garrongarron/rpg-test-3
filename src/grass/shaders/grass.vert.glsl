@@ -84,16 +84,16 @@ void main() {
 
 	// Based on centre of view cone position, what grid tile should
 	// this piece of grass be drawn at?
-	vec2 gridOffset = vec2(
-		floor((drawPos.x - offset.x) / PATCH_SIZE) * PATCH_SIZE + PATCH_SIZE / 2.0,
-		floor((drawPos.y - offset.y) / PATCH_SIZE) * PATCH_SIZE + PATCH_SIZE / 2.0
-	);
+	// vec2 gridOffset = vec2(
+	// 	floor((drawPos.x - offset.x) / PATCH_SIZE) * PATCH_SIZE + PATCH_SIZE / 2.0,
+	// 	floor((drawPos.y - offset.y) / PATCH_SIZE) * PATCH_SIZE + PATCH_SIZE / 2.0
+	// );
 
 	// Find the blade mesh world x,y position
-	vec2 bladePos = vec2(offset.xy + gridOffset);
+	vec2 bladePos = offset.xy; //vec2(offset.xy + gridOffset);
 
 	// height/light map sample position
-	vSamplePos = bladePos.xy * heightMapScale.xy + vec2(0.5, 0.5);
+	vSamplePos = bladePos ; //bladePos.xy * heightMapScale.xy + vec2(0.5, 0.5);
 
 	// Compute wind effect
 	// Using the lighting channel as noise seems make the best looking wind for some reason!
@@ -117,12 +117,12 @@ void main() {
 
 	// Determine if we want the grass to appear or not
 	// Use the noise channel to perturb the altitude grass starts growing at.
-	float noisyAltitude = altitude + hdata.b * TRANSITION_NOISE - (TRANSITION_NOISE / 2.0);
-	float degenerate = (clamp(noisyAltitude, TRANSITION_LOW, TRANSITION_HIGH) - TRANSITION_LOW)
-		* (1.0 / (TRANSITION_HIGH - TRANSITION_LOW));
+	// float noisyAltitude = altitude + hdata.b * TRANSITION_NOISE - (TRANSITION_NOISE / 2.0);
+	// float degenerate = (clamp(noisyAltitude, TRANSITION_LOW, TRANSITION_HIGH) - TRANSITION_LOW)
+	// 	* (1.0 / (TRANSITION_HIGH - TRANSITION_LOW));
 
 	// Transition geometry toward degenerate as we approach beach altitude
-	vpos *= degenerate;
+	vpos *= 1.0;//degenerate;
 
 	// Vertex color must be brighter because it is multiplied with blade texture
 	vec3 color = min(vec3(grassColor.r * 1.25, grassColor.g * 1.25, grassColor.b * 0.95), 1.0);
@@ -155,7 +155,7 @@ void main() {
 	// Translate to world coordinates
 	vpos.x += bladePos.x;
 	vpos.y += bladePos.y;
-	vpos.z += altitude;
+	vpos.z += offset.z ;//altitude;
 
 	gl_Position = projectionMatrix * modelViewMatrix * vec4(vpos, 1.0);
 }

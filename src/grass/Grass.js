@@ -19,7 +19,7 @@ let addGrass = (scene) => {
         grass.material.uniforms['time'].value += .01
         grass.material.uniforms.drawPos.value = [camera.position.x, -camera.position.z]
         scene.add(grass)
-        grass.position.y -=33
+        grass.position.y -=7
         console.log(grass);
     })
 }
