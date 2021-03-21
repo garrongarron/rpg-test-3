@@ -2,6 +2,8 @@ import {TextureLoader} from 'three'
 import grassFile from '../images/textures/grass.jpg'
 import heightmapFile from '../images/textures/heightmap.jpg'
 import noiseFile from '../images/textures/noise.jpg'
+import vertexFile from './shaders/grass.vert.glsl'
+import fragFile from './shaders/grass.frag.glsl'
 
 let assets = {
     textures :{
@@ -28,7 +30,7 @@ let grass = () => {
 let FS = () => {
     return new Promise((resolve, reject) => {
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", 'src/grass/shaders/grass.frag.glsl', false);
+        rawFile.open("GET", fragFile, false);
         rawFile.onreadystatechange = function () {
             if (rawFile.readyState === 4) {
                 if (rawFile.status === 200 || rawFile.status == 0) {
@@ -46,7 +48,7 @@ let FS = () => {
 let VS = () => {
     return new Promise((resolve, reject) => {
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", 'src/grass/shaders/grass.vert.glsl', false);
+        rawFile.open("GET", vertexFile, false);
         rawFile.onreadystatechange = function () {
             if (rawFile.readyState === 4) {
                 if (rawFile.status === 200 || rawFile.status == 0) {
@@ -66,7 +68,6 @@ let heightMap = () => {
         const img = new Image()
         img.addEventListener('load', () => {
             assets.images.heightmap = img
-            assets.images.moise = img
             resolve(true);
         });
         img.addEventListener('error', () => {
