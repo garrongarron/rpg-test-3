@@ -1,16 +1,10 @@
 import basicContainer from './modules/BasicContainer.js'
 
 import queue from './modules/Queue.js' 
-import SlideBar from './modules/SlideBar.js'
-
-let slideBar = new SlideBar()
 
 let start = () =>{
 
-    slideBar.show()
-    slideBar.get().classList.add('gold')
-    slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 25%, #ffc0cb00 0%)'
-    slideBar.setLabel('25/100')
+
     
 
     

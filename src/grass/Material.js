@@ -21,7 +21,7 @@ let getMaterial = () => {
         heightMapScale,
         fogColor: config.FOG_COLOR,
         fogFar: config.GRASS_PATCH_RADIUS * 20, //fogDist, // 2000
-        grassFogFar: 75, //config.GRASS_PATCH_RADIUS * 2, //grassFogDist, // 170
+        grassFogFar: config.GRASS_PATCH_RADIUS * 3, //, //grassFogDist, // 170
         grassColor: config.GRASS_COLOR,
         transitionLow: config.BEACH_TRANSITION_LOW,
         transitionHigh: config.BEACH_TRANSITION_HIGH,

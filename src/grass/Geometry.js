@@ -6,49 +6,37 @@ import getCustomNoise from './CustomNoise.js'
 
 let gen = getCustomNoise()
 let opts = {
-    // lightDir: config.LIGHT_DIR,
     numBlades: config.NUM_GRASS_BLADES,
     radius: config.GRASS_PATCH_RADIUS,
-    // texture: assets.textures['grass'],
-    // vertScript: assets.shaders['grass.vert'],
-    // fragScript: assets.shaders['grass.frag'],
-    // heightMap: terraMap,
-    // heightMapScale,
-    // fogColor: config.FOG_COLOR,
-    // fogFar: config.GRASS_PATCH_RADIUS * 20, //fogDist, // 2000
-    // grassFogFar: 170, //config.GRASS_PATCH_RADIUS * 2, //grassFogDist, // 170
-    // grassColor: config.GRASS_COLOR,
-    // transitionLow: config.BEACH_TRANSITION_LOW,
-    // transitionHigh: config.BEACH_TRANSITION_HIGH,
-    // windIntensity
 }
+let getGeometry = (offsetWorld) => {
+    const buffers = {
+        // Tells the shader which vertex of the blade its working on.
+        // Rather than supplying positions, they are computed from this vindex.
+        vindex: new Float32Array(config.BLADE_VERTS * 2 * 1),
+        // Shape properties of all blades
+        shape: new Float32Array(4 * opts.numBlades),
+        // Positon & rotation of all blades
+        offset: new Float32Array(4 * opts.numBlades),
+        // Indices for a blade
+        index: new Uint16Array(config.BLADE_INDICES)
+    }
+    initBladeIndices(buffers.index, 0, config.BLADE_VERTS, 0)
+    initBladeOffsetVerts(buffers.offset, offsetWorld)
+    initBladeShapeVerts(buffers.shape, opts.numBlades, buffers.offset)
+    initBladeIndexVerts(buffers.vindex)
 
-const buffers = {
-    // Tells the shader which vertex of the blade its working on.
-    // Rather than supplying positions, they are computed from this vindex.
-    vindex: new Float32Array(config.BLADE_VERTS * 2 * 1),
-    // Shape properties of all blades
-    shape: new Float32Array(4 * opts.numBlades),
-    // Positon & rotation of all blades
-    offset: new Float32Array(4 * opts.numBlades),
-    // Indices for a blade
-    index: new Uint16Array(config.BLADE_INDICES)
+
+    const geometry = new InstancedBufferGeometry()
+    geometry.boundingSphere = new Sphere(
+        new Vector3(0, 0, 0), Math.sqrt(opts.radius * opts.radius * 2.0) * 10000.0
+    )
+    geometry.addAttribute('vindex', new BufferAttribute(buffers.vindex, 1))
+    geometry.addAttribute('shape', new InstancedBufferAttribute(buffers.shape, 4))
+    geometry.addAttribute('offset', new InstancedBufferAttribute(buffers.offset, 4))
+    geometry.setIndex(new BufferAttribute(buffers.index, 1))
+    return geometry
 }
-initBladeIndices(buffers.index, 0, config.BLADE_VERTS, 0)
-initBladeOffsetVerts(buffers.offset, opts.numBlades, opts.radius)
-initBladeShapeVerts(buffers.shape, opts.numBlades, buffers.offset)
-initBladeIndexVerts(buffers.vindex)
-
-
-const geometry = new InstancedBufferGeometry()
-geometry.boundingSphere = new Sphere(
-    new Vector3(0, 0, 0), Math.sqrt(opts.radius * opts.radius * 2.0) * 10000.0
-)
-geometry.addAttribute('vindex', new BufferAttribute(buffers.vindex, 1))
-geometry.addAttribute('shape', new InstancedBufferAttribute(buffers.shape, 4))
-geometry.addAttribute('offset', new InstancedBufferAttribute(buffers.offset, 4))
-geometry.setIndex(new BufferAttribute(buffers.index, 1))
-
 
 function initBladeIndexVerts(vindex) {
     for (let i = 0; i < vindex.length; ++i) {
@@ -71,10 +59,10 @@ function initBladeShapeVerts(shape, numBlades, offset) {
         shape[i * 4 + 3] = 0.05 + Math.random() * 0.3 // curve
     }
 }
-function initBladeOffsetVerts(offset, numBlades, patchRadius) {
-    for (let i = 0; i < numBlades; ++i) {
-        offset[i * 4 + 0] = nrand() * patchRadius // x
-        offset[i * 4 + 1] = nrand() * patchRadius // y
+function initBladeOffsetVerts(offset, offsetWorld) {
+    for (let i = 0; i < opts.numBlades; ++i) {
+        offset[i * 4 + 0] = nrand() * opts.radius + offsetWorld.x // x
+        offset[i * 4 + 1] = nrand() * opts.radius + offsetWorld.y // y
         offset[i * 4 + 2] = gen.Get(offset[i * 4 + 0], offset[i * 4 + 1]);// // z
         offset[i * 4 + 3] = Math.PI * 2.0 * Math.random() // rot
     }
@@ -102,4 +90,5 @@ function initBladeIndices(id, vc1, vc2, i) {
         vc2 += 2
     }
 }
-export default geometry
+
+export { getGeometry, initBladeOffsetVerts }

@@ -13,7 +13,7 @@ import startMouseSystem, { setAcumulated, stop as mouseStop } from '../basic/Mou
 import keyListener from '../basic/KeyListener.js'
 import machine from '../basic/Machine.js'
 import startUI from '../ui/app.js'
-import startTutorial from './scene2/Totorial.js'
+import startTutorial from './scene2/Tutorial.js'
 import addGrass from '../grass/Grass.js'
 
 
@@ -43,6 +43,7 @@ class Scene2 {
         loadPalading().then(paladin => {
             this.paladin = paladin
             this.paladin.position.set(0, -6.75, 71.5)
+            // this.paladin.position.set(0, -6.75, 0)
             camera.position.set(-2.37, -4.5,  61.7)
             scene.add(paladin)
             // console.log(paladin);
@@ -54,8 +55,9 @@ class Scene2 {
             mouseController(this.paladin).on()
             startTutorial()
             startUI()
+            addGrass(scene, paladin)
         })
-        addGrass(scene)
+        
     }
 
     stop() {
