@@ -1,4 +1,3 @@
-
 .basic-container {
     width: 400px;
     height: 80px;
@@ -134,8 +133,9 @@
     margin-top: -1.5em;
     text-shadow: 1px 1px 2px black;
 }
+
 /*TItle*/
-.ui-title{
+.ui-title {
     position: fixed;
     top: 2em;
     left: 2em;
@@ -150,9 +150,10 @@
     user-select: none;
     box-shadow: 0px 0px 4px red;
 }
-/*TItle*/
+
+/*Title*/
 // $assetPath :"";
-.ui-chest{
+.ui-chest {
     position: fixed;
     top: 3em;
     left: 3em;
@@ -167,4 +168,48 @@
     text-align: center;
     font-size: 2em;
     color: orange;
+}
+
+/*Title*/
+@keyframes volume {
+    from {
+        color: orange;
+    }
+
+    to {
+        color: white;
+    }
+}
+.volume-icon {
+    // position: fixed;
+    // top: .2em;
+    // left: .2em;
+    font-size: 1em;
+    color: orange;
+    margin: auto .25em;
+    // z-index: 2;
+    &:hover {
+        color: white;
+        animation: volume 0.5s ease-in ;
+    }
+}
+.volume-input{
+    position: fixed;
+    top: .2em;
+    font-size: 2em;
+    width: 250px;
+    color: orange;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume-input input[type=range]::-moz-range-thumb {
+    appearance: none;
+    opacity: 0;
+}
+.volume-input input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    opacity: 0;
 }

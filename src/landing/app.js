@@ -4,6 +4,7 @@ import fragmentShaderFilename from '../shaders/fragmentShaderIntro.glsl'//nuevo
 import { Camera, Scene, PlaneBufferGeometry, ShaderMaterial, Vector2, Mesh, WebGLRenderer } from 'three';
 import loadFire from './Fire.js'
 import { loadAudio, playFuego } from './Music.js';
+import volume from '../ui/modules/Volume.js';
 
 function loadShaders() {
     let vertex = new Promise((ok, fail) => {
@@ -119,6 +120,7 @@ let startLanding = () => {
     loadShaders()
     showLogo()
     loadFire()
+    volume.start()
 }
 
 
