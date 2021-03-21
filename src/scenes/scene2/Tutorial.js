@@ -2,6 +2,7 @@ import { playPlim } from "../../landing/Music";
 import basicContainer from "../../ui/modules/BasicContainer";
 import title from "../../ui/modules/Title.js";
 import SlideBar from '../../ui/modules/SlideBar.js'
+import chest from "../../ui/modules/Chest";
 let timeoutN
 
 let memoryKey = new Map()
@@ -89,6 +90,10 @@ let mission4 = () => {
             slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 100%, #ffc0cb00 0%)'
             slideBar.setLabel('100/100')
             title.close()
+            setTimeout(() => {
+                chest.setTitle('Congratulations')
+                chest.start()
+            }, 1000*2);
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)

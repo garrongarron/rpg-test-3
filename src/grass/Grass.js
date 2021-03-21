@@ -26,9 +26,6 @@ let addGrass = (scene, paladin) => {
             // grass.material.uniforms.drawPos.value = [camera.position.x, -camera.position.z]
         })
 
-        scene.add(grass)
-
-        console.log(grass);
     })
 }
 

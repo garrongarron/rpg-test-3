@@ -28,7 +28,6 @@ class GrassChunkManager {
     }
     init(offset) {
         if (offset.x == this.prevOffset.x && offset.y == this.prevOffset.y) {
-            console.log(false);
             return
         }
 
