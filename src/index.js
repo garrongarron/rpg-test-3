@@ -1,5 +1,3 @@
-import chest from './images/chest.pro.png'
-
 import './landing/css/style.scss'
 import './landing/css/fire.scss'
 import './landing/css/shining.scss'

@@ -1,5 +1,5 @@
 import cache from "./Cache"
-
+import chestUrl from '../../images/chest.pro.png'
 
 class Chest
 {
@@ -7,6 +7,8 @@ class Chest
         this.chest = document.createElement('div')
         this.chest.innerText = "Let's do the first steps"
         this.chest.classList.add('ui-chest')
+        console.log(chestUrl);
+        this.chest.style.background = `url(${chestUrl}) 0px 0px`
     }
     setTitle(title){
         this.chest.innerText = title
