@@ -8,3 +8,4 @@ discord.addEventListener('click',()=>{
     window.open('https://discord.gg/thzfr37x', '_blank');
 })
 document.body.appendChild(discord)
+console.log('discord loaded');
