@@ -27,7 +27,7 @@ class Scene1 {
                 this.paladin.position.y + MathUtils.clamp(this.h, this.limit, this.h_initial),
                 this.paladin.position.z,
             )
-            this.h -= 0.01
+            this.h -= 0.0125
             if (this.h < this.limit) {
                 this.machine.removeCallback(this.cb)
             }

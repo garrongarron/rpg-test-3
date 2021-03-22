@@ -47,12 +47,13 @@ let longTimeAgo = () => {
                 show(()=>{
                     goTo('game')
                 })
-            }, 8*1000);
+                clearInterval(timer)
+            }, 6*1000);
         }
         setTimeout(() => {
             p.classList.remove('hide')
             p.classList.add('gradient')
         }, 1000);
-    }, 8 * 1000);
+    }, 6 * 1000);
 }
 export default longTimeAgo

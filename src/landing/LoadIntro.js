@@ -22,7 +22,6 @@ let startIntro = () => {
         title.classList.add('hide')
     }, 2000);
     setTimeout(() => {
-
         document.querySelector('#container').remove()
         hideLogo()
         start = true
