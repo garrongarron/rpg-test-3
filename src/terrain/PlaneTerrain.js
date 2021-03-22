@@ -29,5 +29,11 @@ let loadPlaneTerrain = (scene, target) => {
   manager.getArround(offset)
 }
 
+let closeTerrain = () =>{
+  manager.close()
+  manager = null
+  target = null
+}
+
 export default loadPlaneTerrain
-export { setTarget }
+export { setTarget , closeTerrain}

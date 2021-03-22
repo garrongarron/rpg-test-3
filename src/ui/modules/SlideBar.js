@@ -33,6 +33,7 @@ class SlideBar
         this.label.innerText = label
     }
     show(){
+        this.container.classList.remove('hide')
         this.container.classList.remove('fadeOut1')
         this.container.classList.add('fadeIn1')
         document.body.appendChild(this.container)
@@ -40,6 +41,9 @@ class SlideBar
     hide(){
         this.container.classList.remove('fadeIn1')
         this.container.classList.add('fadeOut1')
+        setTimeout(() => {
+            this.container.classList.add('hide')
+        }, 1000);
     }
 }
 

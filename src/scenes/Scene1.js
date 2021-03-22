@@ -53,9 +53,9 @@ class Scene1 {
         loadPalading().then(paladin => {
             this.paladin = paladin
             scene.add(paladin)
+            paladin.position.set(0, 0, 0)
             setTimeout(() => {
                 this.machine.addCallback(this.cb)
-
             }, 5 * 1000);
             camera.position.set(0, 2, -7)
             camera.lookAt(

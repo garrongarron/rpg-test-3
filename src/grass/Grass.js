@@ -5,28 +5,34 @@ import GrassChunkManager from "./GrassChunkManager.js"
 import config from "./Config.js"
 
 let unit = config.GRASS_PATCH_RADIUS * 2
+let grass = { chunkManager: null }
+let paladin = null
+
 let assetsReady = () => {
     return assetsInPromise
 }
-let addGrass = (scene, paladin) => {
+
+let grassRelocation = () => {
+    let offset = {
+        x: Math.round(paladin.position.x / unit) * unit,
+        y: -Math.round(paladin.position.z / unit) * unit
+    }
+    grass.chunkManager.init(offset)
+}
+let addGrass = (scene, warrior) => {
+    paladin = warrior
     assetsReady().then(() => {
         // getMaterial()
-        let grassChunkManager = new GrassChunkManager(scene)
+        grass.chunkManager = new GrassChunkManager(scene)
 
-
-
-        
-        machine.addCallback(() => {
-            let offset = {
-                x: Math.round(paladin.position.x / unit) * unit,
-                y: -Math.round(paladin.position.z / unit) * unit
-            }
-            grassChunkManager.init(offset)
-            // grass.material.uniforms['time'].value += .01
-            // grass.material.uniforms.drawPos.value = [camera.position.x, -camera.position.z]
-        })
+        machine.addCallback(grassRelocation)
 
     })
 }
-
+let dropGrass = () => {
+    machine.removeCallback(grassRelocation)
+    grass.chunkManager.close()
+    grass.chunkManager = null
+}
 export default addGrass
+export { dropGrass }

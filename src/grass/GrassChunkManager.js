@@ -102,6 +102,14 @@ class GrassChunkManager {
         }
         this.prevOffset = offset
     }
+    close(){
+        this.chunks.forEach(element => {
+            this.scene.remove(element)
+            console.log('removing grass from scene');
+        });
+        this.chunks = new Map()
+        this.prevOffset = { x: null, y: null }
+    }
 }
 
 export default GrassChunkManager

@@ -124,6 +124,16 @@ class ChunkManagers {
         plane.geometry.attributes.position.needsUpdate = true;
         plane.geometry.dynamic = true;
     }
+
+    close(){
+        this.scene.remove(this.mainChunk)
+        this.chunks.forEach(element => {
+            this.scene.remove(element)
+        });
+        this.mainChunk = null
+        this.chunks = new Map()
+        this.prevOffset = { x: 1, y: 1 }
+    }
 }
 
 

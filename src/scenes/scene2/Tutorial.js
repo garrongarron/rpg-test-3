@@ -5,6 +5,7 @@ import SlideBar from '../../ui/modules/SlideBar.js'
 import chest from "../../ui/modules/Chest";
 import progressCircle from "../../ui/modules/ProgressCircle";
 
+
 let timeoutN
 
 let memoryKey = new Map()
@@ -21,7 +22,6 @@ let down = (e) => {
     }
     ask()
 }
-
 let isPressed = (keycode) => {
     if (!memoryKey.has(keycode))
         return false
@@ -120,10 +120,6 @@ let mission4 = () => {
     }
 }
 
-
-
-
-
 let mission = null
 let ask = () => {
     if (typeof mission == 'function') mission()
@@ -149,5 +145,16 @@ let startTutorial = () => {
     mission = mission1
 }
 
+let finishTutorial = () =>{
+    title.close()
+    slideBar.hide()
+    basicContainer.hide()
+    document.removeEventListener('keydown', down)
+    document.removeEventListener('keyup', up)
+    progressCircle.close()
+    chest.close()
+}
+
 
 export default startTutorial
+export { finishTutorial }

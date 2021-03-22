@@ -1,5 +1,7 @@
 import cache from "./Cache"
 import chestUrl from '../../images/cofres.png'
+import goTo from "../../scenes/SceneHandler.js"
+
 
 class Chest
 {
@@ -9,15 +11,21 @@ class Chest
         this.chest.classList.add('ui-chest')
         console.log(chestUrl);
         this.chest.style.background = `url(${chestUrl}) -800px 0px`
+        this.chest.addEventListener('click', ()=>{
+            goTo('intro')
+        })
     }
+
     setTitle(title){
         this.chest.innerText = title
     }
+
     start(){
         document.body.appendChild(this.chest)
         this.chest.classList.add('fadeIn1')
         this.chest.classList.remove('fadeOut1')
     }
+
     close(){
         setTimeout(() => {
             cache.appendChild(this.chest)
