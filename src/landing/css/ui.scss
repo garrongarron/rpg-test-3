@@ -215,3 +215,17 @@
 }
 
 
+/**/
+.discord{
+    position: fixed;
+    bottom: .5em;
+    left: .5em;
+    z-index: 1;
+    width: 99px;
+    height: 33px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.discord:hover{
+    border: 1px solid yellow;
+}

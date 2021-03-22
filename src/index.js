@@ -5,7 +5,7 @@ import './landing/css/ui.scss'
 import './landing/css/slidebar.scss'
 import './landing/css/progressCircle.scss'
 import startLanding from './landing/app.js'
-
+import './ui/modules/Discord.js'
 
 import goTo from './scenes/SceneHandler'
 import { loadAudio } from './landing/Music'
