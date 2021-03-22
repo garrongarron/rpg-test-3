@@ -3,6 +3,8 @@ import basicContainer from "../../ui/modules/BasicContainer";
 import title from "../../ui/modules/Title.js";
 import SlideBar from '../../ui/modules/SlideBar.js'
 import chest from "../../ui/modules/Chest";
+import progressCircle from "../../ui/modules/ProgressCircle";
+
 let timeoutN
 
 let memoryKey = new Map()
@@ -28,65 +30,81 @@ let isPressed = (keycode) => {
     }
 }
 let mission1 = () => {
-    if (isPressed(87)) {
+    if (isPressed(87)&& !isPressed(16)) {
         clearTimeout(timeoutN)
+        progressCircle.close()
+        progressCircle.start()
         console.log('re-start');
         timeoutN = setTimeout(() => {
             console.log('Achivement');
             basicContainer.show('Walk backwards', "Press [S] to walk backwards", 'S')
             mission = mission2
             playPlim()
+            progressCircle.close()
             slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 25%, #ffc0cb00 0%)'
             slideBar.setLabel('25/100')
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)
+        progressCircle.close()
         console.log('clean up');
     }
 }
 let mission2 = () => {
-    if (isPressed(83)) {
+    if (isPressed(83)&& !isPressed(16)) {
         clearTimeout(timeoutN)
+        progressCircle.close()
+        progressCircle.start()
         console.log('re-start');
         timeoutN = setTimeout(() => {
             console.log('Achivement');
             basicContainer.show('Run ahead', "Press [SHIFT]+[W] to run ahead", '.W')
             mission = mission3
             playPlim()
+            progressCircle.close()
             slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 50%, #ffc0cb00 0%)'
             slideBar.setLabel('50/100')
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)
+        progressCircle.close()
         console.log('clean up');
     }
 }
 let mission3 = () => {
     if (isPressed(87) && isPressed(16)) {
         clearTimeout(timeoutN)
+        progressCircle.close()
+        progressCircle.start()
         console.log('re-start');
+        progressCircle.start()
         timeoutN = setTimeout(() => {
             console.log('Achivement');
             basicContainer.show('Run backwards', "Press [SHIFT]+[S] to run backwards", '.S')
             mission = mission4
             playPlim()
+            progressCircle.close()
             slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 75%, #ffc0cb00 0%)'
             slideBar.setLabel('75/100')
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)
+        progressCircle.close()
         console.log('clean up');
     }
 }
 let mission4 = () => {
     if (isPressed(83) && isPressed(16)) {
         clearTimeout(timeoutN)
+        progressCircle.close()
+        progressCircle.start()
         console.log('re-start');
         timeoutN = setTimeout(() => {
             console.log('Achivement');
             basicContainer.show('Tutor', "Well done!", 'XD')
             mission = null
             playPlim()
+            progressCircle.close()
             slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 100%, #ffc0cb00 0%)'
             slideBar.setLabel('100/100')
             title.close()
@@ -97,6 +115,7 @@ let mission4 = () => {
         }, 2 * 1000);
     } else {
         clearTimeout(timeoutN)
+        progressCircle.close()
         console.log('clean up');
     }
 }
@@ -111,6 +130,7 @@ let ask = () => {
 }
 let up = (e) => {
     memoryKey.set(e.keyCode, false)
+    ask()
 }
 
 let slideBar = new SlideBar()

@@ -1,4 +1,4 @@
-import cache from "./Cache"
+import cache from "./Cache.js"
 
 
 class Title
