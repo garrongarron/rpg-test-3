@@ -20,7 +20,7 @@ class Scene1 {
         this.machine = machine
         this.h = 8
         this.h_initial = 8
-        this.limit = 2
+        this.limit = 2.8
         this.cb = () => {
             camera.lookAt(
                 this.paladin.position.x,
@@ -57,7 +57,7 @@ class Scene1 {
             setTimeout(() => {
                 this.machine.addCallback(this.cb)
             }, 5 * 1000);
-            camera.position.set(0, 2, -7)
+            camera.position.set(0, 2.5, -3)
             camera.lookAt(
                 this.paladin.position.x,
                 this.paladin.position.y + this.h,

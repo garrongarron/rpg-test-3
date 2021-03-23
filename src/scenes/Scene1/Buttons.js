@@ -1,3 +1,5 @@
+import { dropFireShader } from "../../landing/Fire"
+
 let tutorial, start, background, menu
 let setUp = () => {
     tutorial = document.createElement('div')
@@ -53,15 +55,13 @@ let hide = () => {
     menu.classList.remove('fadeIn')
     let canvas  = document.getElementById('c')
     canvas.classList.add('fadeOut2')
-    let fire = document.querySelector('.fire')
-    fire.classList.add('fadeOut2')
+    dropFireShader()
 
     setTimeout(() => {
         canvas.classList.remove('fadeOut2')
         canvas.classList.remove('hide')
         canvas.classList.add('fadeIn')
         menu.remove()
-        fire.remove()
     }, 2 * 1000);
 }
 

@@ -1,7 +1,7 @@
 import scene from './Scene.js'
 import camera from './Camera.js'
 import machine from './Machine.js'
-import { WebGLRenderer } from 'three';
+import { DoubleSide, WebGLRenderer } from 'three';
 // import { loadAnimations } from '../warrior/AnimationLoader.js'
 
 // import * as THREE from 'three';
@@ -12,7 +12,9 @@ let init = () => {
     // loadWarrior()
     let c = document.createElement('canvas')
     c.id = 'c'
-    document.body.insertBefore(c, document.body.firstChild)
+    // document.body.insertBefore(c, document.body.firstChild)
+    document.body.insertBefore(c, document.querySelector('#container'))
+    // document.querySelector('#container').after(c)
     let renderer = new WebGLRenderer(
         {
             canvas: document.getElementById('c'),

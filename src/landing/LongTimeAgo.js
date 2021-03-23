@@ -13,7 +13,7 @@ let start = () => {
         'Long time ago...',
         '...in a far away...',
         '...a brave warrior named Samu...',
-        '...fight for something more than just his own happines..',
+        '...fought for something more than just his own happiness...',
         '...he fought to free his people...'
     ]
     // container.appendChild(title)

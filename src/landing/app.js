@@ -1,8 +1,9 @@
 import goToIntro, { showLogo } from './LoadIntro.js'
 import vertexShaderFilename from '../shaders/vertexShaderIntro.glsl'//nuevo
 import fragmentShaderFilename from '../shaders/fragmentShaderIntro.glsl'//nuevo
+import fragmentFireShaderFilename from '../shaders/fragmentShaderFire.glsl'//nuevo
 import { Camera, Scene, PlaneBufferGeometry, ShaderMaterial, Vector2, Mesh, WebGLRenderer } from 'three';
-import loadFire from './Fire.js'
+// import loadFire from './Fire.js'
 import { loadAudio, playFuego } from './Music.js';
 import volume from '../ui/modules/Volume.js';
 
@@ -24,7 +25,8 @@ function loadShaders() {
 
     let fragment = new Promise((ok, fail) => {
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", fragmentShaderFilename, false);
+        // rawFile.open("GET", fragmentShaderFilename, false);
+        rawFile.open("GET", fragmentFireShaderFilename, false);
 
         rawFile.onreadystatechange = function () {
             if (rawFile.readyState === 4) {
@@ -53,7 +55,7 @@ let run = (shaders) => {
     animate();
 
     function init() {
-        
+
         container = document.getElementById('container');
 
         camera = new Camera();
@@ -78,9 +80,10 @@ let run = (shaders) => {
         var mesh = new Mesh(geometry, material);
         scene.add(mesh);
 
-        renderer = new WebGLRenderer();
+        renderer = new WebGLRenderer({ alpha: true });
+        
         renderer.setPixelRatio(window.devicePixelRatio);
-
+        renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
 
         onWindowResize();
@@ -94,8 +97,8 @@ let run = (shaders) => {
 
     function onWindowResize(event) {
         renderer.setSize(window.innerWidth, window.innerHeight);
-        uniforms.u_resolution.value.x = renderer.domElement.width;
-        uniforms.u_resolution.value.y = renderer.domElement.height;
+        uniforms.u_resolution.value.x = renderer.domElement.width*0.5;
+        uniforms.u_resolution.value.y = renderer.domElement.height*0.5;
     }
 
     function animate() {
@@ -105,7 +108,7 @@ let run = (shaders) => {
     }
 
     function render() {
-        uniforms.u_time.value += 0.05;
+        uniforms.u_time.value += 0.05 * .25;
         renderer.render(scene, camera);
     }
 }
@@ -114,12 +117,13 @@ let run = (shaders) => {
 let startLanding = () => {
     let canvas = document.createElement('div')
     canvas.id = 'container'
+    canvas.style.position = 'fixed'
     document.body.insertBefore(canvas, document.body.firstChild);
     loadAudio()
     playFuego()
     loadShaders()
     showLogo()
-    loadFire()
+    // loadFire()
     volume.start()
 }
 

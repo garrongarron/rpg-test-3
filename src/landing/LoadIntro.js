@@ -13,7 +13,7 @@ let goToCinematic = () => {
 
 let startIntro = () => {
     play()
-    document.querySelector('#container').classList.add('fadeOut')
+    // document.querySelector('#container').classList.add('fadeOut')
     btn.classList.remove('beating1')
     btn.classList.add('fadeOut2')
     title.classList.add('fadeOut2')
@@ -22,9 +22,9 @@ let startIntro = () => {
         title.classList.add('hide')
     }, 2000);
     setTimeout(() => {
-        document.querySelector('#container').remove()
+        // document.querySelector('#container').remove()
         hideLogo()
-        start = true
+        // start = true
         try {
             loadPalading().then((paladin) => {
                 goToCinematic()
@@ -61,6 +61,9 @@ let hideLogo = () => {
 let goToIntro = () => {
     return start
 }
+let stopFire = () =>{
+    start = true
+}
 export default goToIntro
-export { showLogo, goToCinematic }
+export { showLogo, goToCinematic, stopFire }
 
