@@ -113,6 +113,7 @@ module.exports = {
       patterns: [
         { from: "src/warrior/SwordAndShield", to: "models/SwordAndShield" },
         { from: "src/trees/models", to: "models/Threes" },
+        { from: "src/cubeplane/model", to: "models/CubePlane" },
         // { from: "other", to: "public" },
       ],
     }),

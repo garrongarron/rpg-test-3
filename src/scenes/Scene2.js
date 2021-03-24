@@ -12,7 +12,7 @@ import { setAcumulated } from '../basic/Mouse.js'
 import keyListener from '../basic/KeyListener.js'
 import startTutorial, { finishTutorial } from './scene2/Tutorial.js'
 import addGrass, { dropGrass } from '../grass/Grass.js'
-
+import loadCubePlane from '../cubeplane/CubePlane.js'
 
 loadTextures()
 class Scene2 {
@@ -34,11 +34,13 @@ class Scene2 {
         scene.add(pointLight);
         scene.add(box)
         scene.add(sky)
+        loadCubePlane(scene);
         setFog(scene)
         keyListener.start()
         setAcumulated({ x: -246, y: -2675 })
         loadPalading().then(paladin => {
             this.paladin = paladin
+            console.log(paladin);
             this.paladin.position.set(0, -6.75, 71.5)
             // this.paladin.position.set(0, -6.75, 0)
             camera.position.set(-2.37, -4.5, 61.7)
