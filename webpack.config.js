@@ -114,6 +114,7 @@ module.exports = {
         { from: "src/warrior/SwordAndShield", to: "models/SwordAndShield" },
         { from: "src/trees/models", to: "models/Threes" },
         { from: "src/cubeplane/model", to: "models/CubePlane" },
+        { from: "src/peasant/model", to: "models/Peasant" },
         // { from: "other", to: "public" },
       ],
     }),

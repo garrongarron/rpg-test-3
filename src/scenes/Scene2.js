@@ -13,6 +13,7 @@ import keyListener from '../basic/KeyListener.js'
 import startTutorial, { finishTutorial } from './scene2/Tutorial.js'
 import addGrass, { dropGrass } from '../grass/Grass.js'
 import loadCubePlane from '../cubeplane/CubePlane.js'
+import loadPeasant from '../peasant/Peasant.js'
 
 loadTextures()
 class Scene2 {
@@ -32,9 +33,12 @@ class Scene2 {
         scene.add(ambientLight);
         scene.add(hemiLight);
         scene.add(pointLight);
-        scene.add(box)
+        // scene.add(box)
         scene.add(sky)
-        loadCubePlane(scene);
+        // loadCubePlane(scene);
+        
+
+
         setFog(scene)
         keyListener.start()
         setAcumulated({ x: -246, y: -2675 })
@@ -52,6 +56,7 @@ class Scene2 {
             mouseController(this.paladin).on()
             startTutorial()
             addGrass(scene, paladin)
+            loadPeasant(scene, paladin)//******************* */
         })
     }
 

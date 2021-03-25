@@ -107,9 +107,9 @@ let mission4 = () => {
             progressCircle.close()
             slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 100%, #ffc0cb00 0%)'
             slideBar.setLabel('100/100')
-            title.close()
+            // title.close()
             setTimeout(() => {
-                chest.setTitle('Congratulations')
+                chest.setTitle('')
                 chest.start()
             }, 1000*2);
         }, 2 * 1000);
@@ -131,7 +131,7 @@ let up = (e) => {
 
 let slideBar = new SlideBar()
 let startTutorial = () => {
-    title.start()
+    // title.start()
     slideBar.show()
     slideBar.get().classList.add('gold')
     slideBar.getBar().style.background = 'linear-gradient(90deg, #fbff00 0%, #ffc0cb00 0%)'
@@ -146,7 +146,7 @@ let startTutorial = () => {
 }
 
 let finishTutorial = () =>{
-    title.close()
+    // title.close()
     slideBar.hide()
     basicContainer.hide()
     document.removeEventListener('keydown', down)

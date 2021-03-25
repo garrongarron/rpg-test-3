@@ -1,12 +1,12 @@
 import getBlend from './Blend.js'
 import noise from './NoiseMaker.js'
 import { PlaneGeometry, Mesh } from 'three'
-
+import params from './PerlinCofig.js'
 
 
 class ChunkManagers {
 
-    constructor(params, scene, unit) {
+    constructor(scene, unit) {
         this.chunks = new Map()
         this.chunksId = 0
         this.mainChunk = null

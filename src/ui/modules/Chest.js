@@ -12,7 +12,7 @@ class Chest
         console.log(chestUrl);
         this.chest.style.background = `url(${chestUrl}) -800px 0px`
         this.chest.addEventListener('click', ()=>{
-            goTo('intro')
+            // goTo('intro')
         })
     }
 
